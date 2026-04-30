@@ -1,14 +1,59 @@
+# Search engines
 User-agent: Googlebot
 Allow: /
 
 User-agent: Bingbot
 Allow: /
 
-User-agent: Twitterbot
+User-agent: Yandex
 Allow: /
 
-User-agent: facebookexternalhit
+User-agent: YandexBot
 Allow: /
+
+# AI search assistants (отвечают со ссылкой на источник) — РАЗРЕШЕНЫ
+User-agent: PerplexityBot
+Allow: /
+
+User-agent: OAI-SearchBot
+Allow: /
+
+User-agent: ChatGPT-User
+Allow: /
+
+User-agent: Claude-SearchBot
+Allow: /
+
+User-agent: Claude-User
+Allow: /
+
+# AI training crawlers — разрешены (повышает узнаваемость бренда в моделях).
+# Если нужно запретить — заменить Allow на Disallow ниже.
+User-agent: GPTBot
+Allow: /
+
+User-agent: ClaudeBot
+Allow: /
+
+User-agent: anthropic-ai
+Allow: /
+
+User-agent: Google-Extended
+Allow: /
+
+User-agent: YandexAdditional
+Allow: /
+
+User-agent: CCBot
+Allow: /
+
+User-agent: Applebot-Extended
+Allow: /
+
+User-agent: Bytespider
+Disallow: /
 
 User-agent: *
 Allow: /
+
+Sitemap: https://smalltech.ontico.ru/sitemap.xml

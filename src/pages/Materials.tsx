@@ -1,6 +1,8 @@
 import { useState } from "react";
 import { Calendar, MapPin, Play, FileText, ExternalLink, ArrowDown } from "lucide-react";
 import SectionHeading from "@/components/site/SectionHeading";
+import Seo from "@/components/site/Seo";
+import { OrganizationLd, BreadcrumbLd } from "@/components/site/JsonLd";
 
 import petrovichLogo from "@/assets/partners/petrovich-tech.png";
 import vitechLogo from "@/assets/partners/vitech.png";
@@ -167,8 +169,7 @@ const MEETUPS: Meetup[] = [
 const PartnerLogo = ({ partner }: { partner: Partner }) => (
   <a
     href={partner.url}
-    target="_blank"
-    rel="noreferrer"
+    target="_blank" rel="noopener noreferrer"
     title={partner.name}
     aria-label={partner.name}
     className="group flex h-16 w-32 shrink-0 items-center justify-center rounded-xl border border-primary/20 bg-primary/10 p-2 backdrop-blur-sm transition-all hover:border-primary/50 hover:bg-primary/15 hover:shadow-glow sm:h-20 sm:w-40"
@@ -254,8 +255,7 @@ const TalkCard = ({ talk, index }: { talk: Talk; index: number }) => {
         {talk.slidesUrl && (
           <a
             href={talk.slidesUrl}
-            target="_blank"
-            rel="noreferrer"
+            target="_blank" rel="noopener noreferrer"
             className="mt-5 inline-flex w-fit items-center gap-2 rounded-full border border-primary/40 bg-primary/10 px-4 py-2 text-sm font-medium text-primary-glow transition-colors hover:bg-primary/20"
           >
             <FileText className="h-4 w-4" />
@@ -298,8 +298,7 @@ const MeetupSection = ({ meetup }: { meetup: Meetup }) => {
           {meetup.venue.url ? (
             <a
               href={meetup.venue.url}
-              target="_blank"
-              rel="noreferrer"
+              target="_blank" rel="noopener noreferrer"
               className="link-underline text-foreground"
             >
               {meetup.venue.name}
@@ -337,6 +336,15 @@ const MeetupSection = ({ meetup }: { meetup: Meetup }) => {
 const Materials = () => {
   return (
     <div className="anim-fade">
+      <Seo
+        title="Материалы и медиа Смоллтех"
+        description="Презентации, исследования, статьи и медиа сообщества Смоллтех — для журналистов, партнёров и участников."
+        path="/materials"
+        type="website"
+        keywords="смоллтех, smalltech, материалы, медиа, презентации, исследования"
+      />
+      <OrganizationLd />
+      <BreadcrumbLd items={[{ name: 'Материалы', path: '/materials' }]} />
       {/* HEAD */}
       <header className="relative overflow-hidden border-b border-border/60">
         <div className="absolute inset-0 grid-pattern opacity-40" aria-hidden />
@@ -401,8 +409,7 @@ const Materials = () => {
           />
           <a
             href="https://conf.ontico.ru/lectures/submit/external-xxexk7892X"
-            target="_blank"
-            rel="noreferrer"
+            target="_blank" rel="noopener noreferrer"
             className="mt-8 inline-flex h-11 items-center rounded-full bg-gradient-amber px-6 text-sm font-medium text-primary-foreground shadow-glow transition-transform hover:scale-[1.02]"
           >
             Предложить доклад

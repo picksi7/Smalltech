@@ -27,7 +27,7 @@ const SiteHeader = () => {
           </span>
         </Link>
 
-        <nav className="hidden items-center gap-1 lg:flex">
+        <nav className="hidden items-center gap-1 lg:flex" aria-label="Основная навигация">
           {NAV.map((item) => (
             <RouterNavLink
               key={item.to}
@@ -50,8 +50,7 @@ const SiteHeader = () => {
         <div className="hidden items-center gap-3 lg:flex">
           <a
             href="https://github.com"
-            target="_blank"
-            rel="noreferrer"
+            target="_blank" rel="noopener noreferrer"
             className="flex h-9 w-9 items-center justify-center rounded-full border border-border bg-secondary/40 text-muted-foreground transition-colors hover:text-foreground"
             aria-label="GitHub"
           >
@@ -76,7 +75,7 @@ const SiteHeader = () => {
 
       {open && (
         <div className="border-t border-border/60 bg-background/95 backdrop-blur-xl lg:hidden">
-          <nav className="container-wide flex flex-col gap-1 py-4">
+          <nav className="container-wide flex flex-col gap-1 py-4" aria-label="Мобильная навигация">
             {NAV.map((item) => (
               <RouterNavLink
                 key={item.to}

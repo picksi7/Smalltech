@@ -1,5 +1,7 @@
 import { Link } from "react-router-dom";
 import { ArrowRight, Sparkles, Users, FileSearch, MessageCircle } from "lucide-react";
+import Seo from "@/components/site/Seo";
+import { OrganizationLd, WebSiteLd, BreadcrumbLd } from "@/components/site/JsonLd";
 import heroImg from "@/assets/hero-network.jpg";
 import researchImg from "@/assets/research-grid.jpg";
 import communityImg from "@/assets/community-orbit.jpg";
@@ -40,6 +42,16 @@ const sections = [
 const Home = () => {
   return (
     <div className="anim-fade">
+      <Seo
+        title="Смоллтех — сообщество малых и средних ИТ-компаний"
+        description="Объединение инженеров, деврелов и менеджеров технобренда smalltech и midtech. Манифест, исследование 468 анкет и программа конференции."
+        path="/"
+        type="website"
+        keywords="смоллтех, smalltech, midtech, ИТ-сообщество, малые ИТ-компании, средние ИТ-компании, конференция, деврел, инженерное сообщество, Онтико"
+      />
+      <OrganizationLd />
+      <WebSiteLd />
+      <BreadcrumbLd items={[]} />
       {/* HERO */}
       <section className="relative overflow-hidden border-b border-border/40">
         <div className="absolute inset-0 grid-pattern opacity-40" aria-hidden />

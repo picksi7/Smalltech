@@ -2,6 +2,8 @@ import { Link } from "react-router-dom";
 import { Check, Calendar, Handshake, Users, ArrowRight } from "lucide-react";
 import communityImg from "@/assets/community-orbit.jpg";
 import SectionHeading from "@/components/site/SectionHeading";
+import Seo from "@/components/site/Seo";
+import { OrganizationLd, BreadcrumbLd } from "@/components/site/JsonLd";
 
 const milestones = [
   { year: "2024", title: "Чат соло-деврелов", text: "Несколько менеджеров технобренда из малых ИТ-компаний начинают собираться в чате — место поддержки и нестыдных вопросов." },
@@ -24,6 +26,15 @@ const done = [
 const Community = () => {
   return (
     <div className="anim-fade">
+      <Seo
+        title="Сообщество Смоллтех — 30+ компаний, партнёрство с Онтико"
+        description="Как устроено сообщество Смоллтех: от чата соло-деврелов до объединения 30+ компаний и стратегического партнёрства с Онтико."
+        path="/community"
+        type="website"
+        keywords="смоллтех, smalltech, сообщество, Онтико, ИТ-объединение, малые ИТ-компании"
+      />
+      <OrganizationLd />
+      <BreadcrumbLd items={[{ name: 'Сообщество', path: '/community' }]} />
       {/* HEAD */}
       <header className="relative overflow-hidden border-b border-border/60">
         <div className="absolute inset-0 grid-pattern opacity-40" aria-hidden />
@@ -112,8 +123,7 @@ const Community = () => {
               </p>
               <a
                 href="https://ontico.ru"
-                target="_blank"
-                rel="noreferrer"
+                target="_blank" rel="noopener noreferrer"
                 className="mt-6 inline-flex items-center gap-2 text-sm font-medium text-primary"
               >
                 ontico.ru <ArrowRight className="h-4 w-4" />

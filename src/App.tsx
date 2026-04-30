@@ -1,43 +1,52 @@
-import { QueryClient, QueryClientProvider } from "@tanstack/react-query";
-import { HashRouter, Route, Routes } from "react-router-dom";
-import { Toaster as Sonner } from "@/components/ui/sonner";
-import { Toaster } from "@/components/ui/toaster";
-import { TooltipProvider } from "@/components/ui/tooltip";
-import SiteLayout from "@/components/site/SiteLayout";
-import Home from "./pages/Home";
-import Manifesto from "./pages/Manifesto";
-import Research from "./pages/Research";
-import Community from "./pages/Community";
-import Partnership from "./pages/Partnership";
-import Materials from "./pages/Materials";
-import Join from "./pages/Join";
-import NotFound from "./pages/NotFound.tsx";
+import type { RouteRecord } from 'vite-react-ssg'
+import { QueryClient, QueryClientProvider } from '@tanstack/react-query'
+import { Toaster as Sonner } from '@/components/ui/sonner'
+import { Toaster } from '@/components/ui/toaster'
+import { TooltipProvider } from '@/components/ui/tooltip'
+import SiteLayout from '@/components/site/SiteLayout'
+import Home from './pages/Home'
+import Manifesto from './pages/Manifesto'
+import Research from './pages/Research'
+import Community from './pages/Community'
+import Partnership from './pages/Partnership'
+import Materials from './pages/Materials'
+import Join from './pages/Join'
+import NotFound from './pages/NotFound'
 
-const queryClient = new QueryClient();
+const queryClient = new QueryClient()
 
-const App = () => (
-  <QueryClientProvider client={queryClient}>
-    <TooltipProvider>
-      <Toaster />
-      <Sonner />
-      {/* HashRouter — works out of the box on GitHub Pages without extra config */}
-      <HashRouter>
-        <Routes>
-          <Route element={<SiteLayout />}>
-            <Route path="/" element={<Home />} />
-            <Route path="/manifesto" element={<Manifesto />} />
-            <Route path="/research" element={<Research />} />
-            <Route path="/community" element={<Community />} />
-            <Route path="/partnership" element={<Partnership />} />
-            <Route path="/materials" element={<Materials />} />
-            <Route path="/join" element={<Join />} />
-            {/* ADD ALL CUSTOM ROUTES ABOVE THE CATCH-ALL "*" ROUTE */}
-            <Route path="*" element={<NotFound />} />
-          </Route>
-        </Routes>
-      </HashRouter>
-    </TooltipProvider>
-  </QueryClientProvider>
-);
+function Providers({ children }: { children: React.ReactNode }) {
+  return (
+    <QueryClientProvider client={queryClient}>
+      <TooltipProvider>
+        <Toaster />
+        <Sonner />
+        {children}
+      </TooltipProvider>
+    </QueryClientProvider>
+  )
+}
 
-export default App;
+// Route definitions used by vite-react-ssg for SSG prerender
+// BrowserRouter is used instead of HashRouter so each route gets its own HTML file
+export const routes: RouteRecord[] = [
+  {
+    path: '/',
+    element: (
+      <Providers>
+        <SiteLayout />
+      </Providers>
+    ),
+    entry: 'src/App.tsx',
+    children: [
+      { index: true, element: <Home /> },
+      { path: 'manifesto', element: <Manifesto /> },
+      { path: 'research', element: <Research /> },
+      { path: 'community', element: <Community /> },
+      { path: 'partnership', element: <Partnership /> },
+      { path: 'materials', element: <Materials /> },
+      { path: 'join', element: <Join /> },
+      { path: '*', element: <NotFound /> },
+    ],
+  },
+]

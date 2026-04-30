@@ -1,5 +1,7 @@
 import { Link } from "react-router-dom";
 import { ArrowRight, Activity, Layers, Mic, Users2 } from "lucide-react";
+import Seo from "@/components/site/Seo";
+import { OrganizationLd, ArticleLd, DatasetLd, BreadcrumbLd } from "@/components/site/JsonLd";
 import researchImg from "@/assets/research-grid.jpg";
 import StatCard from "@/components/site/StatCard";
 import SectionHeading from "@/components/site/SectionHeading";
@@ -60,6 +62,25 @@ const actions = [
 const Research = () => {
   return (
     <div className="anim-fade">
+      <Seo
+        title="Исследование болей smalltech и midtech — 468 анкет, 6 конференций"
+        description="Топ-6 болей малых и средних ИТ-компаний. 468 анкет, 6 крупнейших ИТ-конференций, 979 аналитических единиц. Карта программы конференции Смоллтех."
+        path="/research"
+        type="article"
+        publishedTime="2026-04-01"
+        modifiedTime="2026-04-01"
+        keywords="смоллтех, smalltech, midtech, исследование, боли ИТ-компаний, конференция, программа"
+      />
+      <OrganizationLd />
+      <ArticleLd
+        headline="Исследование болей smalltech и midtech — 468 анкет, 6 конференций"
+        description="Топ-6 болей малых и средних ИТ-компаний. 468 анкет, 6 крупнейших ИТ-конференций, 979 аналитических единиц."
+        path="/research"
+        datePublished="2026-04-01"
+        dateModified="2026-04-01"
+      />
+      <DatasetLd />
+      <BreadcrumbLd items={[{ name: 'Исследование', path: '/research' }]} />
       {/* HEAD */}
       <header className="relative overflow-hidden border-b border-border/60">
         <div className="absolute inset-0 grid-pattern opacity-40" aria-hidden />

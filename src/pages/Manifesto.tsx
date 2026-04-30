@@ -1,6 +1,8 @@
 import { Link } from "react-router-dom";
 import { ArrowRight, Quote } from "lucide-react";
 import SectionHeading from "@/components/site/SectionHeading";
+import Seo from "@/components/site/Seo";
+import { OrganizationLd, ArticleLd, BreadcrumbLd } from "@/components/site/JsonLd";
 
 const sizes = [
   { tier: "Микротех", range: "до 100", note: "сотрудников в ИТ-подразделениях" },
@@ -38,6 +40,24 @@ const factors = [
 const Manifesto = () => {
   return (
     <article className="anim-fade">
+      <Seo
+        title="Манифест Смоллтех — большой выход малых ИТ-компаний"
+        description="Кто такой смоллтех, почему его не видят и почему пора это менять. Манифест сообщества малых и средних ИТ-компаний России."
+        path="/manifesto"
+        type="article"
+        publishedTime="2025-01-01"
+        modifiedTime="2025-01-01"
+        keywords="смоллтех, smalltech, midtech, манифест, ИТ-сообщество, малые ИТ-компании, технобренд"
+      />
+      <OrganizationLd />
+      <ArticleLd
+        headline="Манифест Смоллтех — большой выход малых ИТ-компаний"
+        description="Кто такой смоллтех, почему его не видят и почему пора это менять."
+        path="/manifesto"
+        datePublished="2025-01-01"
+        dateModified="2025-01-01"
+      />
+      <BreadcrumbLd items={[{ name: 'Манифест', path: '/manifesto' }]} />
       {/* HEAD */}
       <header className="relative overflow-hidden border-b border-border/60">
         <div className="absolute inset-0 grid-pattern opacity-50" aria-hidden />
